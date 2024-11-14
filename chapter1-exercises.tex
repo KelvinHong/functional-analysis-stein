@@ -1,0 +1,107 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lachaise Assignment
+% LaTeX Template
+% Version 1.0 (26/6/2018)
+%
+% This template originates from:
+% http://www.LaTeXTemplates.com
+%
+% Authors:
+% Marion Lachaise & François Févotte
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\input{structure.tex} % Include the file specifying the document structure and custom commands
+
+%----------------------------------------------------------------------------------------
+%	ASSIGNMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Functionaal Analysis Stein: Chapter 1. Exercises.} % Title of the assignment
+
+\author{Kelvin Hong\\ \texttt{kh.boon2@gmail.com}} % Author name and email address
+
+\date{Xiamen University Malaysia, Asia Pacific University Malaysia --- \today} % University, school and/or department name(s) and a date
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Print the title
+
+\section{Problems}
+
+\begin{enumerate}
+    \item Consider $L^p=L^p(\mathbb R^d)$ with Lebesgue measure. Let $f_0(x)=\abs{x}^{-\alpha}$ if $\abs x<1$.
+    $f_0(x)=0$ for $\abs x\geq 1$, also let $f_\infty(x)=\abs{x}^{-\alpha}$ if $\abs x\geq 1$,
+    $f_\infty(x)=0$ when $\abs x<1$.
+
+    Show that 
+    \begin{enumerate}[(a)]
+        \item $f_0\in L^p$ if and only if $p\alpha < d$.
+
+        \begin{solution}
+        Let $S_{d-1}$ be the surface area of the open unit ball $B_d=\{\abs x<1: x\in\mathbb R^d\}$ in $\mathbb R^d$, then if $f_0\in L^p$
+        we can write
+        $$\|f_0\|_{L_p}^p= \int_{B_d} \abs x^{-p\alpha} dx = S_{d-1} \int_0^1 \dfrac{1}{r^p\alpha}\cdot r^{d-1} dr=S_{d-1} \int_0^1 \dfrac1{r^{1-d+p\alpha}}dr.$$
+        Since the integral converges, we must have $1-d+p\alpha<1$ so $p\alpha<d$. We saw that the converse is also true.
+        \end{solution}
+
+        \item $f_\infty\in L^p$ if and only if $d<p\alpha$.
+
+        \begin{solution}
+        Similar to the previous part, we have
+        $$\|f_\infty\|_{L_p}^p= S_{d-1} \int_1^\infty \dfrac1{r^{1-d+p\alpha}}dr$$
+        which is finite iff $d<p\alpha$.
+        \end{solution}
+
+        \item What happens if in the definitions of $f_0$ and $f_\infty$ we replace $\abs x^{-\alpha}$ by $\abs x^{-\alpha}/(\log(2/\abs x))$ for $\abs x<1$,
+        and $\abs x^{-\alpha}/(\log(2\abs x))$ for $\abs x\geq 1$?
+
+        \begin{solution}
+            If the definition of $f_0$ changed to $$f_0(x) = \begin{cases}
+                \abs x^{-\alpha} /\log(2/\abs x) & \text{if } \abs x<1,\\
+                0 & \text{if } \abs x\geq 1,
+            \end{cases}$$
+            Then we want to show that $f_0\in L^p$ iff $p\alpha<d$, or $p\alpha=d$ with $p>1$, which is a little bit more nuanced than the previous part.
+            When $p\alpha<d$, we see that $\abs f_0\leq \frac1{\log 2} \abs x^{-\alpha}$, so that $f_0\in L^p$ as it is absolutely bounded above by another function in $L^p$.
+
+            When $p\alpha=d$, we have
+            $$S_{d-1}^{-1}\|f_0\|_p^p=\int_0^1 \dfrac{dr}{r(\log(2/r))^p}.$$
+            Using substitution $u=\log(2/r)$, the RHS becomes $\int_{\log 2}^\infty \dfrac{du}{u^p}$, which converges when $p>1$ and diverges when $p\leq 1$.
+
+            When $p\alpha>d$, we want to prove $f_0\notin L^p$. We have
+            \begin{align*}
+                S_{d-1}^{-1} \int_{\mathbb R^d} |f_0|^p dx &= \int_0^1 \dfrac{r^{-p\alpha} r^{d-1}}{(\log (2/r))^p}dr\\
+                &\geq \int_0^{1/2} \dfrac{dr}{r^{1+p\alpha -d} (\log (2/r))^p}\\
+                &\geq \int_0^{1/2} \dfrac{dr}{r^{1+p\alpha-d}2^p (\log (1/r))^p}.
+            \end{align*}
+            The last step is because $2/r \leq 1/r^2$ whenever $0<r<1/2$. We now using $u=1/r$, RHS can be
+            $$RHS \geq \int_2^\infty \dfrac{du}{2^p u^{1-p\alpha+d}(\log u)^p}.$$
+            By assumption, $1-p\alpha+d<1$, we can now choose $\theta>0$ so that $1-p\alpha+d+\theta<1$, then choose $K>2$ big enough such that
+            $(\log u)^p < u^\theta$ for all $u\geq K$, hence
+            $$RHS \geq \int_K^\infty \dfrac{du}{2^p u^{1-p\alpha+d+\theta}} = +\infty,$$
+            hence $f_0\notin L^p$.
+
+            If the definition of $f_\infty$ changed to $$f_\infty(x) = \begin{cases}
+                \abs x^{-\alpha} /\log(2\abs x) & \text{if } \abs x\geq1,\\
+                0 & \text{if } \abs x< 1,
+            \end{cases}$$
+            then by a similar argument, we have $f_\infty\in L^p$ whenever $d<p\alpha$. When $p\alpha=d$, we can similarly prove that $f_\infty\in L^p$ iff $p>1$. Moreover,
+            $f_\infty \notin L^p$ when $p\alpha<d$.
+        \end{solution}
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
