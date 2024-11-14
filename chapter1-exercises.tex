@@ -101,6 +101,36 @@
             $f_\infty \notin L^p$ when $p\alpha<d$.
         \end{solution}
     \end{enumerate}
+    \item Consider the spaces $L^p(\mathbb R^d)$, when $0<p<\infty$
+    \begin{enumerate}[(a)]
+        \item Show that if $\|f+g\|_{L^p}\leq \|f\|_{L^p} + \|g\|_{L^p}$ for all $f$ and $g$, then necessarily $p\geq 1$.
+        
+        \begin{solution}
+            We only need to show there are $f,g\in L^p$ such that $\|f+g\|_{L^p}> \|f\|_{L^p} + \|g\|_{L^p}$ when $0<p<1$. Let $K_1=\{x\in \mathbb R^d: x_i\in (0,1) \forall 1\leq i\leq d\}$
+            be a unit square in $\mathbb R^d$, and also $K_{-1}=\{x\in \mathbb R^d: x_i\in (-1,0) \forall 1\leq i\leq d\}$ be its mirror.
+
+            We then have $\|f\|_{L^p}=\|g\|_{L^p}=1$, but then $\|f+g\|_{L^p}=2^{1/p} > 2 = \|f\|_{L^p}+\|g\|_{L^p}$.
+        \end{solution}
+
+        \item Consider $L^p(\mathbb R)$ where $0<p<1$. Show that there are no bounded linear functionals on this space.
+        In other words, if $\ell$ is a linear functional $L^p(\mathbb R)\mapsto \mathbb C$ that satisfies
+        $$\abs{\ell(f)} \leq M\ \|f\|_{L^p(\mathbb R)} \quad\text{ for all $f\in L^p(\mathbb R)$ and some $M>0$,}$$
+        then $\ell=0$.
+
+        \begin{solution}
+            For each $x>0$, we let $\chi_x$ be the characteristic function of $[0,x]$ on $\mathbb R$, then extends it naturally to $x\leq 0$
+            where it is the characteristic function of $[x, 0]$. Let $F(x)=\ell(\chi_x)$.
+
+            Suppose $\ell$ is a bounded linear functional with the constant $M$ as stated in the question, then for any $x,y\in \mathbb R$
+            we must have
+            $$\abs{F(x)-F(y)} = \abs{\ell(\chi_x-\chi_y)} \leq M \|\chi_x-\chi_y\|_{L^p(\mathbb R)}=M\abs{x-y}^{1/p}.$$
+            This means that $F$ is a continuous function, but then since 
+            $$\abs{\dfrac{F(x)-F(y)}{x-y}} \leq M\abs{x-y}^{1/p-1},$$
+            $F$ is then differentiable and has derivative $0$ everywhere, hence $F$ is a constant function, and must be zero too
+            because $F(0)=\ell(\chi_0)=0$.
+            This shows $\ell$ can only be zero.
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
