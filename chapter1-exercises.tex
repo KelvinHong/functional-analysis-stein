@@ -131,6 +131,25 @@
             This shows $\ell$ can only be zero.
         \end{solution}
     \end{enumerate}
+
+    \item If $f\in L^p$  and $g\in L^q$, both not identically equal to zero, show that equality
+    holds in H\"older's inequality if and only if there exist two non-zero constants $a,b\geq 0$
+    such that $a\abs{f(x)}^p = b\abs{g(x)}^q$ for almost every $x$.
+
+    \begin{solution}
+        Since we have to prove $a\abs{f(x)}^p = b\abs{g(x)}^q$, we assume $p, q$ are both finite, that means if $\theta=1/p$, then
+        $\theta\in(0,1)$. From the proof of H\"older's inequality, we also write $\hat f=f/\|f\|_p$ and $\hat g=g/\|g\|_q$, these
+        are well-defined because  $f,g$ are not identically zero (we assume it means not equal to zero almost everywhere).
+
+        Again from the proof of H\"older's inequality, we have an inequality $A^\theta B^{1-\theta}\leq \theta A + (1-\theta) B$
+        when $A,B$ are non-negative numbers. Since $\theta\in(0,1)$, the inequality is strict iff $A\neq B$,
+        thus by assumption we must have $A=B$, which means $\abs{\hat f(x)}^p = \abs{\hat g(x)}^q$. Since the equality
+        $\|fg\|_1 = \|f\|_p \|g\|_q$ only holds when the above mentioned inequality holds for almost every $x$, we must have
+        $\abs{\hat f(x)}^p = \abs{\hat g(x)}^q$ for almost every $x$.
+        
+        Unnormalize we have $\|g\|_q^q\abs{f(x)}^p = \|f\|_p^p\abs{g(x)}^q$, which proves the statement because $\|f\|_p$ and $\|g\|_q$
+        are both positive.
+    \end{solution}
 \end{enumerate}
 
 
