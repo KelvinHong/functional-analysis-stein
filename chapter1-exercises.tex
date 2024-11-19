@@ -150,6 +150,48 @@
         Unnormalize we have $\|g\|_q^q\abs{f(x)}^p = \|f\|_p^p\abs{g(x)}^q$, which proves the statement because $\|f\|_p$ and $\|g\|_q$
         are both positive.
     \end{solution}
+
+    \item Suppose $X$ is a measure space and $0<p<1$
+    \begin{enumerate}[(a)]
+        \item Prove that $\|fg\|_{L^1} \geq  \|f\|_{L^p} \|g\|_{L^q}$. Note that $q$, the
+        conjugate exponent of $p$, is negative.
+
+        \begin{solution}
+            If either $\|f\|_{L^p}=0$, $\|g\|_{L^q}=0$, or $fg\notin L^1$, then there is nothing to prove. Thus we may assume
+            $fg\in L^1$ and that $\|f\|_{L^p}>0, \|g\|_{L^q}>0$, and that $\|g\|_{L^q}$ is finite, from here we note that it is easier to assume $g\neq 0$ a.e.
+
+            By taking $p'=1/p  > 1$ and let $q'$ be the conjugate exponent of $p'$, we have
+            \begin{align*}
+                \int \abs{f}^p &= \int\abs{fg}^p \abs{g}^{-p}\\
+                &\leq \left(\int \abs{fg}^{pp'}\right)^{1/p'} \left(\int \abs{g}^{-pq'}\right)^{-1/q'}\\
+                &= \left(\int \abs{fg}\right)^p \left(\int \abs{g}^q\right)^{p-1}\\
+                \therefore \left(\abs{fg}\right)^p &\geq \left(\abs{f}^p\right) \left( \int\abs{g}^q\right)^{1-p}\\
+                \|fg\|_{L^1} &\geq \|f\|_{L^p} \|g\|_{L^q}.
+            \end{align*}
+        \end{solution}
+
+        \item Suppose $f_1$ and $f_2$ are non-negative. Then $\|f_1+f_2\|_{L^p} \geq \|f_1\|_{L^p} + \|f_2\|_{L^p}$.
+        
+        \begin{solution}
+            We have
+            \begin{align*}
+                \int \abs{f_1+f_2}^p &= \int f_1(f_1+f_2)^{p-1} + \int f_2(f_1+f_2)^{p-1}\\
+                &\geq \|f_1\|_{L^p} \|(f_1+f_2)^{p-1}\|_{L^q} + \|f_2\|_{L^p} \|(f_1+f_2)^{p-1}\|_{L^q}\\
+                &= (\|f_1\|_{L^p} + \|f_2\|_{L^p}) \|(f_1+f_2)\|_{L^p}^{p-1}
+            \end{align*}
+            which proves the statement.
+        \end{solution}
+        \item The function $d(f,g)=\|f-g\|_{L^p}^p$ for $f,g\in L^p$ defines a metric
+        on $L^p(X)$.
+
+        \begin{solution}
+            The function $d$ obviously satisfies $d(f,g)=0$ iff $f=g$ a.e., and that it is symmetric.
+            If $a,b$ are non-negative numbers, then we have $a^p+b^p\geq (a+b)^p$ for $0<p<1$. This means that for $f,g,h\in L^p$, we have
+
+            $$d(f,h) = \|f-g+g-h\|_{L^p}^p \leq \|f-g\|_{L^p}^p + \|g-h\|_{L^p}^p = d(f,g)+d(g,h),$$
+            hence $d$ defines a metric on $L^p(X)$. 
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
