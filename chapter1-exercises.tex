@@ -192,6 +192,27 @@
             hence $d$ defines a metric on $L^p(X)$. 
         \end{solution}
     \end{enumerate}
+
+    \item Let $X$ be a measure space. Using the argument to prove the completeness of $L^p(X)$, show that if the sequence $\{f_n\}$ converges to $f$ in the $L^p$ norm, then
+    a subsequence of $\{f_n\}$ converges to $f$ almost everywhere.
+
+    \begin{solution}
+        Let $\{f_n\}$ be a sequence in $L^p(X)$ that converges to $f$ in the $L^p$ norm. We can choose a subsequence $\{f_{n_k}\}$ such that
+        $\|f_{n_{k+1}} - f_{n_k} \|_{L^p} < 2^{-k}$ for each $k\geq 1$.
+
+        Now we define 
+        \begin{align*}
+            g(x) &= f_{n_1}(x) + \sum_{k=1}^\infty (f_{n_{k+1}}(x) - f_{n_k}(x))\\
+            h(x) &= \abs{f_{n_1}(x)} + \sum_{k=1}^\infty \abs{f_{n_{k+1}}(x) - f_{n_k}(x)},
+        \end{align*}
+        following a similar argument when proving the completeness of $L^p(X)$, we see $f_{n_k}\to g$ a.e. on $X$.
+
+        Now we want to show $\|g-f\|_{L^p}=0$, which could in turn proves that $g=f$ a.e. on $X$.
+
+        Given $\varepsilon>0$, we choose $K_0$ such that $2^{-K_0}< \varepsilon$. Then for any $K>K_0$ we have
+        $\|g-f_{n_K}\|_{L^p} \leq \sum_{k=K}^\infty \|f_{n_{k+1}}(x) - f_{n_k}(x)\|_{L^p}\leq 2^{-K_0}<\varepsilon$. By letting $K$ to also be big enough
+        to satisfies $\|f-f_{n_K}\|_{L^p} < \varepsilon$, we have $\|g-f\|_{L^p} < 2\varepsilon$. Subsequently we have $f_{n_k}\to f$ a.e. on $X$. 
+    \end{solution}
 \end{enumerate}
 
 
