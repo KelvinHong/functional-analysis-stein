@@ -251,6 +251,43 @@
             $\lim_{n\to\infty}\int_X \abs{f_n(x)-f(x)}^pdx = 0$, thus $\{f_n\}$ converges to $f$ in the $L^p$ norm.
         \end{solution}
     \end{enumerate}
+
+    \item Consider the $L^p$ spaces, $1\leq p<\infty$, on $\mathbb R^d$ with Lebesgue measure.
+    Prove that
+    \begin{enumerate}
+        \item The family of continuous functions with compact support is dense in $L^p$, and in fact:
+        \item The family of indefinitely differentiable functions with compact support is dense in $L^p$.
+        
+        \begin{solution}
+            Since an indefinitely differentiable function is also continuous, it suffices to prove the last statement.
+
+            From 6(b), we only need to prove that if $f$ is a simple function in $L^p(\mathbb R^d)$ and given $\varepsilon>0$,
+            there is a indefinitely differentiable function $g$ with compact support such that $\|f-g\|_{L^p}<\varepsilon$.
+
+            The construction is as follows: We let $\psi(x)$ be a function on $\mathbb R$ such that
+            $$\psi(x) = \begin{cases}
+                \exp(-\dfrac1{1-x^2}), &\text{ if }\abs x<1,\\
+                0, &\text{ if }\abs x\geq 1.
+            \end{cases}$$
+            This is a bump function that is indefinitely differentiable and has compact support on $(-1, 1)$.
+            Simply define $\Psi: \mathbb R^d \to \mathbb R$ such that $\Psi(x) = \prod_{i=1}^d \psi(x_i)$, then
+            $\Psi$ is an indefinitely differentiable function with compact support on the unit cube.
+            Using a suitable scaling, we can construct a function, name it $g$, such that $g$ is a nonnegative,
+            indefinitely differentiable function with compact support, that also satisfies $\int_{\mathbb R^d} g(x)dx=1$.
+
+            For each positive integer $n$, we define $g_n(x) = n^d g(nx)$, then $g_n$ is indefinitely differentiable with support
+            $E_n := (-1/n, -1/n)^d$.
+            We define the convolution $f*h$ such that
+            $$(f*h)(x) = \int_{\mathbb R^d} f(t) h(x-t)dt.$$
+            It can be shown that $h\in L^1(\mathbb R^d)$ implies $f*h\in L^p(\mathbb R^d)$, and that
+            $\|f*h\|_{L^p}\leq \|f\|_{L^p}\|h\|_{L^1}$.
+            It is also true that if $h$ is indefinitely differentiable, then so is $f*h$.
+
+            We now define $f_n = f*g_n$, then $f_n$ is indefinitely differentiable with compact support, and that
+            $f_n\to f$ in $L^p$ (see
+            \href{https://math.stackexchange.com/questions/3593945/convergence-of-approximations-of-the-identity-in-lp-mathbb-rd}{this answer}).
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
