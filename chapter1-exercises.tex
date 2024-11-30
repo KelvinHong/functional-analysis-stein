@@ -213,6 +213,44 @@
         $\|g-f_{n_K}\|_{L^p} \leq \sum_{k=K}^\infty \|f_{n_{k+1}}(x) - f_{n_k}(x)\|_{L^p}\leq 2^{-K_0}<\varepsilon$. By letting $K$ to also be big enough
         to satisfies $\|f-f_{n_K}\|_{L^p} < \varepsilon$, we have $\|g-f\|_{L^p} < 2\varepsilon$. Subsequently we have $f_{n_k}\to f$ a.e. on $X$. 
     \end{solution}
+
+    \item Let $(X, \mathcal F, \mu)$ be a measure space. Show that,
+    \begin{enumerate}
+        \item The simple functions are dense in $L^\infty(X)$ if $\mu(X)<\infty$, and;
+        
+        \begin{solution}
+            (Note: The definition of simple function is not completely clear in the context of this book, but it is reasonable to
+            assume it means "finite sum of indication functions with finite support", else the problem statement assuming $\mu(X)<\infty$
+            doesn't make sense)
+
+            Let $f$ be any function in $L^\infty(X)$.
+            WLOG we can assume $\abs f \leq M = \|f\|_{L^\infty}$ everywhere on $X$ (instead of almost everywhere).
+            Given a positive integer $j$, choose any integer $\ell$ satisfying $-j\leq \ell\leq j$, we define
+            $$E_{\ell, j} = \left\{x\in X: \dfrac{M\ell}j \leq f(x) < \dfrac{M(\ell+1)}{j}\right\}.$$
+            There are $2j+1$ such sets, they are mutually disjoint and that $X=\bigcup_{\ell=-j}^j E_{\ell, j}$.
+            We then let $$f_j(x) = \dfrac{M\ell}j \quad\text{ if } x\in E_{\ell, j},$$
+            which is a simple function that is well-defined everywhere on $X$.
+
+            We then see that $\|f_j-f\|_{L^\infty} \leq 1/j$, hence $\{f_j\}_{j=1}^\infty$ converges to $f$ in the $L^\infty$ norm.
+        \end{solution}
+        \item The simple functions are dense in $L^p(X)$ for $1\leq p<\infty$.
+
+        \begin{solution}
+            Let $f\in L^p(X)$, without loss of generality we assume $f$ is nonnegative, as a general $f$ can be decomposed
+            into the difference of two non-negative functions in $L^p(X)$. We do not assume $f$ is bounded.
+
+            For each positive integer $n$, we define for each $k=1, \dots, n2^n-1$ such that
+            $$E_{k, n} = \left\{x\in X: \dfrac k{2^n}\leq f(x) < \dfrac{k+1}{2^n}\right\}$$
+            Note that each $E_{k, n}$ is of finite measure. We now define
+            $$f_n(x) = \begin{cases}
+                \dfrac k{2^n} & \text{if } x\in E_{k, n},\\
+                0 & \text{if } x\notin \bigcup_{k=1}^{n2^n-1} E_{k, n}.
+            \end{cases}$$
+            Note that $f_n(x)=0$ can happen when $f(x)>=n$ or $f(x) < 1/2^n$. Nevertheless, $f_n\nearrow f$ a.e. on $X$, hence
+            $\abs{f_n(x)} \leq f(x)$ a.e. on $X$. By the Dominated Convergence Theorem, we have
+            $\lim_{n\to\infty}\int_X \abs{f_n(x)-f(x)}^pdx = 0$, thus $\{f_n\}$ converges to $f$ in the $L^p$ norm.
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
