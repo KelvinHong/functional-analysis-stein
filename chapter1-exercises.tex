@@ -288,6 +288,26 @@
             \href{https://math.stackexchange.com/questions/3593945/convergence-of-approximations-of-the-identity-in-lp-mathbb-rd}{this answer}).
         \end{solution}
     \end{enumerate}
+
+    \item Suppose $1\leq p< \infty$, and that $\mathbb R^d$ is equipped with Lebesgue measure. Show that if $f\in L^p(\mathbb R^d)$, then
+    $$\|f(x+h)-f(x)\|_{L^p} \to 0 \quad\text{ as }\abs h \to 0.$$
+
+    Prove that this fails when $p=\infty$.
+
+    \begin{solution}
+        Given $\varepsilon>0$, we can choose a continuous function $g$ with compact support such that $\|f-g\|_{L^p}<\varepsilon$.
+
+        Let $B_R:= \{r\in \mathbb R^d: \abs r\leq R\}$ be the closed ball of radius $R>0$, then we may assume $g$ has support within $B_R$ for some $R>0$,
+        hence for all $\abs h\leq 1$, $g(x+h)-g(x)$ has support within $B_{R+1}$. Since $g$ is continuous on a compact set, it is uniformly continuous,
+        hence we can find a $\delta\in(0,1)$ such that $\abs{g(x+h)-g(x)}\leq \varepsilon/\mu(B_{R+1})^{1/p}$ whenever $\abs h\leq \delta$ for all $x\in B_{R+1}$,
+        and thus 
+        $$\|g(x+h)-g(x)\|_{L^p} \leq \left(\int_{B_{r+1}} \dfrac{\varepsilon^p}{\mu(B_{r+1})}\right)^{1/p} = \varepsilon.$$
+
+        We concluded that $\|f(x+h)-f(x)\|_{L^p} \leq 3\varepsilon$ by using the triangle inequality.
+
+        On the other hand when $p=\infty$, we let $C=[0,1]^d\subset \mathbb R^d$ be a unit cube and let $f=\chi_C$. Then for any nonzero $h\in\mathbb R^d$, we see that
+        $\|f(x+h)-f(x)\|_{L^\infty} = 1$, this is because there are always non-trivial difference between $C$ and $C+h$ so that $f(x+h)-f(x)$ cannot be zero a.e. on $\mathbb R^d$.
+    \end{solution}
 \end{enumerate}
 
 
