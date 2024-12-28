@@ -308,6 +308,102 @@
         On the other hand when $p=\infty$, we let $C=[0,1]^d\subset \mathbb R^d$ be a unit cube and let $f=\chi_C$. Then for any nonzero $h\in\mathbb R^d$, we see that
         $\|f(x+h)-f(x)\|_{L^\infty} = 1$, this is because there are always non-trivial difference between $C$ and $C+h$ so that $f(x+h)-f(x)$ cannot be zero a.e. on $\mathbb R^d$.
     \end{solution}
+
+    \item Suppose $X$ is a measure space and $1\leq p_0 < p_1 \leq \infty$.
+    \begin{enumerate}
+        \item Consider $L^{p_0}\cap L^{p_1}$ equipped with
+        $$\|f\|_{L^{p_0}\cap L^{p_1}} = \|f\|_{L^{p_0}} + \|f\|_{L^{p_1}}.$$
+        Show that $\|\cdot \|_{L^{p_0}\cap L^{p_1}}$ is a norm, and that $L^{p_0}\cap L^{p_1}$ (with this norm) is a Banach space.
+
+        \begin{solution}
+            Given $f,g\in L^{p_0}\cap L^{p_1}$, we have
+            \begin{align*}
+                \|f+g\|_{L^{p_0}\cap L^{p_1}} &= \|f+g\|_{L^{p_0}} + \|f+g\|_{L^{p_1}} \\
+                &\leq \|f\|_{L^{p_0}} + \|g\|_{L^{p_0}} + \|f\|_{L^{p_1}} + \|g\|_{L^{p_1}}\\
+                &= \|f\|_{L^{p_0}\cap L^{p_1}} + \|g\|_{L^{p_0}\cap L^{p_1}},
+            \end{align*}
+            so the triangle inequality holds.
+
+            Given a Cauchy sequence $\{f_n\}_{n\geq 1}$ in $L^{p_0}\cap L^{p_1}$, we need to show it converges to a function in $L^{p_0}\cap L^{p_1}$.
+            The derivation is somewhat routine as to prove the completeness of $L^p$ in the textbook.
+            
+            We first extract a subsequence $\{f_{n_k}\}$ such that $\|f_{n_{k+1}}-f_{n_k}\|_{L^{p_0}\cap L^{p_1}} < 2^{-k}$.
+            Then, for all $x$ we define
+            
+            \begin{align*}
+                f(x) &= f_{n_1}(x) + \sum_{k=1}^\infty (f_{n_{k+1}}(x) - f_{n_k}(x)),\\
+                g(x) &= \abs{f_{n_1}(x)} + \sum_{k=1}^\infty \abs{f_{n_{k+1}}(x) - f_{n_k}(x)},\\
+                S_{K}f(x) &= f_{n_1}(x) + \sum_{k=1}^K (f_{n_{k+1}}(x) - f_{n_k}(x)),\\
+                S_{K}g(x) &= \abs{f_{n_1}(x)} + \sum_{k=1}^K \abs{f_{n_{k+1}}(x) - f_{n_k}(x)}.
+            \end{align*}
+
+            We found that
+            $$\|S_K g(x)\|_{L^{p_0}\cap L^{p_1}} \leq \|f_{n_1}(x)\|_{L^{p_0}\cap L^{p_1}} + \sum_{k=1}^K 2^{-k} \leq \|f_{n_1}(x)\|_{L^{p_0}\cap L^{p_1}} + 1,$$
+            by taking the limit $K\to\infty$, using the monotone convergence theorem for non-negative measurable functions, we see $\|g\|_{L^{p_0}\cap L^{p_1}}$
+            is also finite.
+
+            Now we have $f_{n_k}-f\to 0$ a.e. on $X$. Using a similar argument we have for both $p=p_0$ and $p=p_1$:
+            $$\abs{f(x) - S_Kf(x)}^p \leq 2^{p+1} \abs{g(x)} ^p.$$
+            Using the Dominated Convergence Theorem, both $\|f_{n_k}-f\|_{L^{p_0}}$ and $\|f_{n_k}-f\|_{L^{p_1}}$ converges to $0$, so as
+            $\|f_{n_k}-f\|_{L^{p_0}\cap L^{p_1}}$.
+
+            Since $\{f_n\}_{n\geq 1}$ is Cauchy, we can very easily show $f_n\to f$ in $L^{p_0}\cap L^{p_1}$ (with that norm).
+        \end{solution}
+
+        \item Suppose $L^{p_0} + L^{p_1}$ is defined as the vector space of measurable functions $f$ on $X$ that can be written as a sum
+        $f=f_0+f_1$ with $f_0\in L^{p_0}$ and $f_1\in L^{p_1}$. Consider
+        $$\|f\|_{L^{p_0} + L^{p_1}} = \text{inf}\{\|f_0\|_{L^{p_0}} + \|f_1\|_{L^{p_1}}\},$$
+        where the infimum is taken over all decompositions $f=f_0+f_1$ with $f_0\in L^{p_0}$ and $f_1\in L^{p_1}$.
+        Show that $\|\cdot\|_{L^{p_0} + L^{p_1}}$ is a norm, and that $L^{p_0} + L^{p_1}$ (with this norm) is a Banach space.
+
+        \begin{solution}
+            First we show the space satisfies triangle inequality. Take $f,g\in L^{p_0} + L^{p_1}$. Given $\varepsilon>0$ we may choose $f_0,g_0\in L^{p_0}$
+            and $f_1, g_1\in L^{p_1}$ such that
+            \begin{align*}
+                \|f_0\|_{L^{p_0}} + \|f_1\|_{L^{p_1}} &< \|f\|_{L^{p_0}+L^{p_1}} + \varepsilon\\
+                \|g_0\|_{L^{p_0}} + \|g_1\|_{L^{p_1}} &< \|g\|_{L^{p_0}+L^{p_1}} + \varepsilon.
+            \end{align*}
+            Then we can choose the decomposition $f+g=(f_0+g_0) + (f_1+g_1)$ so we can have
+            \begin{align*}
+                \|f+g\|_{L^{p_0}+L^{p_1}} &\leq \|f_0+g_0\|_{L^{p_0}} + \|f_1+g_1\|_{L^{p_1}}\\
+                &\leq \|f_0\|_{L^{p_0}} + \|g_0\|_{L^{p_0}} + \|f_1\|_{L^{p_1}} + \|g_1\|_{L^{p_1}}\\
+                &< \|f\|_{L^{p_0}+L^{p_1}} + \|g\|_{L^{p_0}+L^{p_1}} + 2\varepsilon,
+            \end{align*}
+            By taking $\varepsilon\to 0$, we eventually proved $\|f+g\|_{L^{p_0}+L^{p_1}} \leq \|f\|_{L^{p_0}+L^{p_1}} + \|g\|_{L^{p_0}+L^{p_1}}$.
+
+            The proof for completeness is routine and hence skipped.
+        \end{solution}
+        \item Show that $L^p \subset L^{p_0} + L^{p_1}$ if $p_0\leq p\leq p_1$.
+
+        \begin{solution}
+            Given $f\in L^p$, we want to express it into $f_0+f_1$ with $f_0\in L^{p_0}$ and $f_1\in L^{p_1}$.
+
+            When either $p_0=p$ or $p_1=p$, the decomposition is trivial. We might then assume $p_0<p<p_1$.
+
+            We now let $f_0 = f \chi_{\abs f\geq 1}$ and $f_1 = f \chi_{\abs f<1}$, then we have $f=f_0+f_1$.
+
+            To show $f_0\in L^{p_0}$, we note a fact that $\mu(E_{\abs f\geq 1})$ is finite, hence by the H\"older's inequality
+            we have
+            
+            $$\int \abs{f_1}^{p_0} \leq \left(\int \abs f^p\right)^{p_0/p} \mu(E_{\abs f\geq 1})^{(p-p_0)/p} = 
+            \mu(E_{\abs f\geq 1})^{(p-p_0)/p} \|f\|_{L^p}^{p_0}.$$
+
+            To show $f_1\in L^{p_1}$, we observe that if $p_1=\infty$, $f_1$ is already bounded by definition.
+            If $p_1$ is finite, we have
+            $$\int \abs{f_1}^{p_1} = \int_{\abs f < 1} \abs{f}^{p_1} \leq \int_{\abs f < 1} \abs{f}^p \leq \|f\|_{L^p}^p.$$
+        \end{solution}
+    \end{enumerate}
+
+    \item A measure space $(X, \mu)$ is \textbf{separable} if there is a countable family of measurable subsets
+    $\{E_k\}_{k=1}^\infty$ so that if $E$ is any measurable set of finite measure,
+    $$\mu(E\Delta E_{n_k}) \to 0\quad\text{ as }k\to 0$$
+    for an appropriate subsequence $\{n_k\}$ which depends on $E$.
+    Here $A\Delta B$ denotes the symmetric difference of the sets $A$ and $B$, that is,
+    $$A\Delta B=(A-B)\cup (B-A).$$
+
+    \begin{enumerate}
+        \item Verify that $\mathbb R^d$ with the usual Lebesgue measure is separable.
+    \end{enumerate}
 \end{enumerate}
 
 
