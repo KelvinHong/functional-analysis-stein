@@ -27,7 +27,7 @@
 %	ASSIGNMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Functionaal Analysis Stein: Chapter 1. Exercises.} % Title of the assignment
+\title{Functional Analysis Stein: Chapter 1. Exercises.} % Title of the assignment
 
 \author{Kelvin Hong\\ \texttt{kh.boon2@gmail.com}} % Author name and email address
 
@@ -403,6 +403,25 @@
 
     \begin{enumerate}
         \item Verify that $\mathbb R^d$ with the usual Lebesgue measure is separable.
+        
+        \begin{solution}
+            Let $E$ be any measurable set of finite measure. For any positive integer $n$, we can define a set of cubes
+            within a grid space of distance $1/n$:
+            $$C_n = \left\{\prod_{k=1}^d (x_k, x_k+1/n): x_k\in \{-n, -n+1/n, \dots, n-1/n\} \quad\forall k\right\}.$$
+            There are only finitely many cubes in this set. We then define $K_n$ to be the set of all possible unions of cubes in $C_n$,
+            then $K_n$ is also a finite set with cardinality $2^{\abs {C_n}}$.
+
+            We now take $K = \bigcup_{n=1}^\infty K_n$ where the order of the sequence is that any element of $K_{n+1}$ comes after any element of $K_n$, and claims that
+            $K=\{E_k\}_{k=1}^\infty$ is a countable family of measurable subsets of $\mathbb R^d$ that satisfies the condition.
+
+            Given $\varepsilon>0$, first we assume $E$ is bounded, then by the definition of measurable set, there is a bounded open set $O$ such that
+            $E\subset O$ and $\mu(O-E)<\varepsilon$. Take this open set, we may find a possible set $F\in K_n$ with $n$ big enough, such that $\mu(F-O) < \varepsilon$,
+            thus $\mu(F-E)<2\varepsilon$. Thus it is possible to choose a subsequence $\{E_{n_k}\}$ of $K$ such that $\mu(E\Delta E_{n_k})\to 0$.
+
+            If $E$ is otherwise not bounded, we just pick $n$ big enough such that $\mu(E\cap [-n,n]^d) > \mu(E) - \varepsilon$, then we can apply a similar logic
+            to pick a corresponding $F\in K_n$ such that $\mu(E\Delta F)< 3\varepsilon$.
+
+        \end{solution}
     \end{enumerate}
 \end{enumerate}
 
