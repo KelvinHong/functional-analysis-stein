@@ -3,3 +3,4 @@
 !*.tex
 !*.pdf
 !README.md
+!.pre-commit-config.yaml

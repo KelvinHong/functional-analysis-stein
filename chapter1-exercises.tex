@@ -12,7 +12,7 @@
 %
 % License:
 % CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
-% 
+%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %----------------------------------------------------------------------------------------
@@ -39,14 +39,14 @@
 
 \maketitle % Print the title
 
-\section{Problems}
+\section{Problems}\label{sec:problems}
 
 \begin{enumerate}
     \item Consider $L^p=L^p(\mathbb R^d)$ with Lebesgue measure. Let $f_0(x)=\abs{x}^{-\alpha}$ if $\abs x<1$.
     $f_0(x)=0$ for $\abs x\geq 1$, also let $f_\infty(x)=\abs{x}^{-\alpha}$ if $\abs x\geq 1$,
     $f_\infty(x)=0$ when $\abs x<1$.
 
-    Show that 
+    Show that
     \begin{enumerate}[(a)]
         \item $f_0\in L^p$ if and only if $p\alpha < d$.
 
@@ -104,7 +104,7 @@
     \item Consider the spaces $L^p(\mathbb R^d)$, when $0<p<\infty$
     \begin{enumerate}[(a)]
         \item Show that if $\|f+g\|_{L^p}\leq \|f\|_{L^p} + \|g\|_{L^p}$ for all $f$ and $g$, then necessarily $p\geq 1$.
-        
+
         \begin{solution}
             We only need to show there are $f,g\in L^p$ such that $\|f+g\|_{L^p}> \|f\|_{L^p} + \|g\|_{L^p}$ when $0<p<1$. Let $K_1=\{x\in \mathbb R^d: x_i\in (0,1) \forall 1\leq i\leq d\}$
             be a unit square in $\mathbb R^d$, and also $K_{-1}=\{x\in \mathbb R^d: x_i\in (-1,0) \forall 1\leq i\leq d\}$ be its mirror.
@@ -124,7 +124,7 @@
             Suppose $\ell$ is a bounded linear functional with the constant $M$ as stated in the question, then for any $x,y\in \mathbb R$
             we must have
             $$\abs{F(x)-F(y)} = \abs{\ell(\chi_x-\chi_y)} \leq M \|\chi_x-\chi_y\|_{L^p(\mathbb R)}=M\abs{x-y}^{1/p}.$$
-            This means that $F$ is a continuous function, but then since 
+            This means that $F$ is a continuous function, but then since
             $$\abs{\dfrac{F(x)-F(y)}{x-y}} \leq M\abs{x-y}^{1/p-1},$$
             $F$ is then differentiable and has derivative $0$ everywhere, hence $F$ is a constant function, and must be zero too
             because $F(0)=\ell(\chi_0)=0$.
@@ -146,7 +146,7 @@
         thus by assumption we must have $A=B$, which means $\abs{\hat f(x)}^p = \abs{\hat g(x)}^q$. Since the equality
         $\|fg\|_1 = \|f\|_p \|g\|_q$ only holds when the above mentioned inequality holds for almost every $x$, we must have
         $\abs{\hat f(x)}^p = \abs{\hat g(x)}^q$ for almost every $x$.
-        
+
         Unnormalize we have $\|g\|_q^q\abs{f(x)}^p = \|f\|_p^p\abs{g(x)}^q$, which proves the statement because $\|f\|_p$ and $\|g\|_q$
         are both positive.
     \end{solution}
@@ -171,7 +171,7 @@
         \end{solution}
 
         \item Suppose $f_1$ and $f_2$ are non-negative. Then $\|f_1+f_2\|_{L^p} \geq \|f_1\|_{L^p} + \|f_2\|_{L^p}$.
-        
+
         \begin{solution}
             We have
             \begin{align*}
@@ -189,7 +189,7 @@
             If $a,b$ are non-negative numbers, then we have $a^p+b^p\geq (a+b)^p$ for $0<p<1$. This means that for $f,g,h\in L^p$, we have
 
             $$d(f,h) = \|f-g+g-h\|_{L^p}^p \leq \|f-g\|_{L^p}^p + \|g-h\|_{L^p}^p = d(f,g)+d(g,h),$$
-            hence $d$ defines a metric on $L^p(X)$. 
+            hence $d$ defines a metric on $L^p(X)$.
         \end{solution}
     \end{enumerate}
 
@@ -200,7 +200,7 @@
         Let $\{f_n\}$ be a sequence in $L^p(X)$ that converges to $f$ in the $L^p$ norm. We can choose a subsequence $\{f_{n_k}\}$ such that
         $\|f_{n_{k+1}} - f_{n_k} \|_{L^p} < 2^{-k}$ for each $k\geq 1$.
 
-        Now we define 
+        Now we define
         \begin{align*}
             g(x) &= f_{n_1}(x) + \sum_{k=1}^\infty (f_{n_{k+1}}(x) - f_{n_k}(x))\\
             h(x) &= \abs{f_{n_1}(x)} + \sum_{k=1}^\infty \abs{f_{n_{k+1}}(x) - f_{n_k}(x)},
@@ -211,13 +211,13 @@
 
         Given $\varepsilon>0$, we choose $K_0$ such that $2^{-K_0}< \varepsilon$. Then for any $K>K_0$ we have
         $\|g-f_{n_K}\|_{L^p} \leq \sum_{k=K}^\infty \|f_{n_{k+1}}(x) - f_{n_k}(x)\|_{L^p}\leq 2^{-K_0}<\varepsilon$. By letting $K$ to also be big enough
-        to satisfies $\|f-f_{n_K}\|_{L^p} < \varepsilon$, we have $\|g-f\|_{L^p} < 2\varepsilon$. Subsequently we have $f_{n_k}\to f$ a.e. on $X$. 
+        to satisfies $\|f-f_{n_K}\|_{L^p} < \varepsilon$, we have $\|g-f\|_{L^p} < 2\varepsilon$. Subsequently we have $f_{n_k}\to f$ a.e. on $X$.
     \end{solution}
 
     \item Let $(X, \mathcal F, \mu)$ be a measure space. Show that,
     \begin{enumerate}
         \item The simple functions are dense in $L^\infty(X)$ if $\mu(X)<\infty$, and;
-        
+
         \begin{solution}
             (Note: The definition of simple function is not completely clear in the context of this book, but it is reasonable to
             assume it means "finite sum of indication functions with finite support", else the problem statement assuming $\mu(X)<\infty$
@@ -257,7 +257,7 @@
     \begin{enumerate}
         \item The family of continuous functions with compact support is dense in $L^p$, and in fact:
         \item The family of indefinitely differentiable functions with compact support is dense in $L^p$.
-        
+
         \begin{solution}
             Since an indefinitely differentiable function is also continuous, it suffices to prove the last statement.
 
@@ -300,7 +300,7 @@
         Let $B_R:= \{r\in \mathbb R^d: \abs r\leq R\}$ be the closed ball of radius $R>0$, then we may assume $g$ has support within $B_R$ for some $R>0$,
         hence for all $\abs h\leq 1$, $g(x+h)-g(x)$ has support within $B_{R+1}$. Since $g$ is continuous on a compact set, it is uniformly continuous,
         hence we can find a $\delta\in(0,1)$ such that $\abs{g(x+h)-g(x)}\leq \varepsilon/\mu(B_{R+1})^{1/p}$ whenever $\abs h\leq \delta$ for all $x\in B_{R+1}$,
-        and thus 
+        and thus
         $$\|g(x+h)-g(x)\|_{L^p} \leq \left(\int_{B_{r+1}} \dfrac{\varepsilon^p}{\mu(B_{r+1})}\right)^{1/p} = \varepsilon.$$
 
         We concluded that $\|f(x+h)-f(x)\|_{L^p} \leq 3\varepsilon$ by using the triangle inequality.
@@ -326,10 +326,10 @@
 
             Given a Cauchy sequence $\{f_n\}_{n\geq 1}$ in $L^{p_0}\cap L^{p_1}$, we need to show it converges to a function in $L^{p_0}\cap L^{p_1}$.
             The derivation is somewhat routine as to prove the completeness of $L^p$ in the textbook.
-            
+
             We first extract a subsequence $\{f_{n_k}\}$ such that $\|f_{n_{k+1}}-f_{n_k}\|_{L^{p_0}\cap L^{p_1}} < 2^{-k}$.
             Then, for all $x$ we define
-            
+
             \begin{align*}
                 f(x) &= f_{n_1}(x) + \sum_{k=1}^\infty (f_{n_{k+1}}(x) - f_{n_k}(x)),\\
                 g(x) &= \abs{f_{n_1}(x)} + \sum_{k=1}^\infty \abs{f_{n_{k+1}}(x) - f_{n_k}(x)},\\
@@ -384,8 +384,8 @@
 
             To show $f_0\in L^{p_0}$, we note a fact that $\mu(E_{\abs f\geq 1})$ is finite, hence by the H\"older's inequality
             we have
-            
-            $$\int \abs{f_1}^{p_0} \leq \left(\int \abs f^p\right)^{p_0/p} \mu(E_{\abs f\geq 1})^{(p-p_0)/p} = 
+
+            $$\int \abs{f_1}^{p_0} \leq \left(\int \abs f^p\right)^{p_0/p} \mu(E_{\abs f\geq 1})^{(p-p_0)/p} =
             \mu(E_{\abs f\geq 1})^{(p-p_0)/p} \|f\|_{L^p}^{p_0}.$$
 
             To show $f_1\in L^{p_1}$, we observe that if $p_1=\infty$, $f_1$ is already bounded by definition.
@@ -403,7 +403,7 @@
 
     \begin{enumerate}
         \item Verify that $\mathbb R^d$ with the usual Lebesgue measure is separable.
-        
+
         \begin{solution}
             Let $E$ be any measurable set of finite measure. For any positive integer $n$, we can define a set of cubes
             within a grid space of distance $1/n$:
@@ -425,13 +425,13 @@
 
         \item The space $L^p(X)$ is \textbf{separable} if there exists a countable collection of elements
         $\{f_n\}_{n=1}^\infty$ in $L^p(X)$ in $L^p$ that is dense.
-        Prove that if the measure space $X$ is separable, then $L^p$ is separable when $1\leq p< \infty$. 
+        Prove that if the measure space $X$ is separable, then $L^p$ is separable when $1\leq p< \infty$.
 
         \begin{solution}
             Given $f\in L^p(X)$, we can find a sequence of simple functions $\{s_n\}_{n=1}^\infty$ that converges to
             $f$ in $L^p(X)$. Let $R=\{r_n\}$ be the set of all simple functions with rational coefficients, then we see $R$ is
             dense in $L^p(X)$ as well.
-            
+
             From the previous question, we can find a countable family of measurable subsets $\{E_k\}$ that satisfies the separability condition.
             Let $R'=\{f_n\}$ be the set of simple functions that are linear combinations of the characteristic functions of $E_k$ with rational coefficients,
             then $R'$ is also dense in $L^p(X)$. The proof is completed once we realize $R'$ is countable.
@@ -447,7 +447,7 @@
 
             Why will this proves $L^\infty(\mathbb R)$ is not separable? We can show by contradiction.
             Assumes $L^\infty(\mathbb R)$ is separable, then there is a countable family of functions $\{g_n\}$
-            that is dense in $L^\infty(\mathbb R)$. 
+            that is dense in $L^\infty(\mathbb R)$.
             For each $a\in\mathbb R$ we pick an integer $N(a)$ such that $\|f_a - g_{N(a)}\|_{L^\infty} < 1/3$.
             However, since real numbers are uncountable, there exists $a\neq b$ such that $N(a)=N(b)$, so that
             $$\|f_a-f_b\|_{L^\infty} \leq 2/3$$
@@ -466,7 +466,7 @@
             When $a< b$, we found that if we choose $f=\chi_{((a-1, (a+b)/2))}$, we have $\|f\|_{L^\infty}$ and $|(\Lambda_a-\Lambda_b)(f)| = 1$,
             so that $\|\Lambda_a - \Lambda_b\|\geq 1$ in the dual space. Following the same logic as the previous question, we showed
             the dual space of $L^\infty(\mathbb R)$ is not separable as well.
-            
+
             TODO: Maybe include another solution here since from the web, people say this can be proved as a result of Hahn-Banach Theorem.
         \end{solution}
     \end{enumerate}
