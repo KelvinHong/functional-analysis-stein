@@ -437,6 +437,39 @@
             then $R'$ is also dense in $L^p(X)$. The proof is completed once we realize $R'$ is countable.
         \end{solution}
     \end{enumerate}
+    \item In light of the previous exercise, prove the following:
+    \begin{enumerate}
+        \item Show that the space $L^\infty(\mathbb R)$ is not separable by constructing for each $a\in \mathbb R$ an
+        $f_a\in L^\infty$, with $\|f_a-f_b\|\geq 1$, if $a\neq b$.
+
+        \begin{solution}
+            We let $f_a=\chi_{(a, a+1)}$, then $\|f_a-f_b\|_{L^\infty} = 1$ if $a\neq b$.
+
+            Why will this proves $L^\infty(\mathbb R)$ is not separable? We can show by contradiction.
+            Assumes $L^\infty(\mathbb R)$ is separable, then there is a countable family of functions $\{g_n\}$
+            that is dense in $L^\infty(\mathbb R)$. 
+            For each $a\in\mathbb R$ we pick an integer $N(a)$ such that $\|f_a - g_{N(a)}\|_{L^\infty} < 1/3$.
+            However, since real numbers are uncountable, there exists $a\neq b$ such that $N(a)=N(b)$, so that
+            $$\|f_a-f_b\|_{L^\infty} \leq 2/3$$
+            which is a contradiction.
+        \end{solution}
+
+        \item Do the same for the dual space of $L^\infty(\mathbb R)$.
+
+        \begin{solution}
+            To recall, the dual space of $L^\infty(\mathbb R)$ is the space of all bounded linear functionals
+            on $L^\infty(\mathbb R)$.
+
+            For each $a\in \mathbb R$, we have defined $f_a$ in the previous question, so let's define a linear functional
+            $\Lambda_a$ such that $\Lambda_a(f) = f(a)$ for all $f\in L^\infty(\mathbb R)$.
+
+            When $a< b$, we found that if we choose $f=\chi_{((a-1, (a+b)/2))}$, we have $\|f\|_{L^\infty}$ and $|(\Lambda_a-\Lambda_b)(f)| = 1$,
+            so that $\|\Lambda_a - \Lambda_b\|\geq 1$ in the dual space. Following the same logic as the previous question, we showed
+            the dual space of $L^\infty(\mathbb R)$ is not separable as well.
+            
+            TODO: Maybe include another solution here since from the web, people say this can be proved as a result of Hahn-Banach Theorem.
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
