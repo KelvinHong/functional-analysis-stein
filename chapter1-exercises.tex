@@ -422,6 +422,20 @@
             to pick a corresponding $F\in K_n$ such that $\mu(E\Delta F)< 3\varepsilon$.
 
         \end{solution}
+
+        \item The space $L^p(X)$ is \textbf{separable} if there exists a countable collection of elements
+        $\{f_n\}_{n=1}^\infty$ in $L^p(X)$ in $L^p$ that is dense.
+        Prove that if the measure space $X$ is separable, then $L^p$ is separable when $1\leq p< \infty$. 
+
+        \begin{solution}
+            Given $f\in L^p(X)$, we can find a sequence of simple functions $\{s_n\}_{n=1}^\infty$ that converges to
+            $f$ in $L^p(X)$. Let $R=\{r_n\}$ be the set of all simple functions with rational coefficients, then we see $R$ is
+            dense in $L^p(X)$ as well.
+            
+            From the previous question, we can find a countable family of measurable subsets $\{E_k\}$ that satisfies the separability condition.
+            Let $R'=\{f_n\}$ be the set of simple functions that are linear combinations of the characteristic functions of $E_k$ with rational coefficients,
+            then $R'$ is also dense in $L^p(X)$. The proof is completed once we realize $R'$ is countable.
+        \end{solution}
     \end{enumerate}
 \end{enumerate}
 
