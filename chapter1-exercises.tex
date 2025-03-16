@@ -470,6 +470,40 @@
             TODO: Maybe include another solution here since from the web, people say this can be proved as a result of Hahn-Banach Theorem.
         \end{solution}
     \end{enumerate}
+
+    \item Suppose the measure space $(X, \mu)$ is separable as defined in Exercise 10.
+    Let $1\leq p< \infty$ and $1/p+1/q=1$.
+    A sequence $\{f_n\}$ with $f_n\in L^p$ is said to converge to $f\in L^p$ \textbf{weakly} if
+
+    $$\int f_ng d\mu \to \int fg d\mu \quad\text{ for every } g\in L^q.$$
+
+    \begin{enumerate}
+        \item Verify that if $\|f-f_n\|_{L^p} \to 0$, then $f_n$ converges to $f$ weakly.
+
+        \begin{solution}
+            For each $g\in L^q$, we have
+            \begin{align*}
+                \abs{\int f_ng - \int fg} &\leq \int \abs{f_n-f}\abs{g}\\
+                &\leq \left(\int \abs{f_n-f}^p\right)^{1/p} \left(\int \abs{g}^q\right)^{1/q}\\
+                &\leq \|f_n-f\|_{L^p} \|g\|_{L^q},
+            \end{align*}
+            hence $f_n$ converges to $f$ weakly.
+        \end{solution}
+
+        \item Suppose $\sup_n \|f_n\|_{L^p} < \infty$. Then, to verify weak convergence it suffices to
+        check for a dense subset of functions $g$ in $L^q$.
+
+        \begin{solution}
+            Suppose $D\subseteq L^q$ is dense and that the weak convergence holds for all $d\in D$.
+            Given $g\in L^q$ and $\varepsilon>0$, we can find a $d\in D$ such that $\|g-d\|_{L^q}<\varepsilon$.
+            We pick $N$ so that $\abs{\int (f_N-f)d} < \varepsilon$, then
+            \begin{align*}
+                \abs{\int f_Ng - \int fg} &\leq \abs{\int f_N(g-d)} + \abs{\int (f_N-f)d} + \abs{\int f(d-g)}\\
+                &\leq \varepsilon \sup_n \|f_n\|_{L^p} + \varepsilon + \|f\|_{L^p} \varepsilon,
+            \end{align*}
+            hence $\int f_n g \to \int fg$ as $n\to\infty$.
+        \end{solution}
+    \end{enumerate}
 \end{enumerate}
 
 
