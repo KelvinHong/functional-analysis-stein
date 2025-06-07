@@ -503,6 +503,57 @@
             \end{align*}
             hence $\int f_n g \to \int fg$ as $n\to\infty$.
         \end{solution}
+
+        \item Suppose $1<p<\infty$. Show that if $\sup_n \|f_n\|_{L^p} < \infty$, then there exists $f\in L^p$, and a subsequence
+        $\{n_k\}$ so that $f_{n_k}$ converges weakly to $f$.
+
+        \begin{solution}
+            Seems like this can be proved by knowing $L^p$ is reflexive, but the textbook doesn't mention it.
+            Will return to this if I can find alternative proofs.
+        \end{solution}
+
+    \end{enumerate}
+
+    \item Below are some examples illustrating weak convergence.
+    \begin{enumerate}
+        \item $f_n(x) = \sin(2\pi nx)$ in $L^p([0,1])$. Show that $f_n\to 0$ weakly.
+
+        \begin{solution}
+            It suffices to prove this for all characteristic functions $g=\chi_{[a,b]}$ where $[a,b]\subset [0,1]$,
+            since the set of finite linear combinations of characteristic functions is dense in $L^p([0,1])$.
+
+            Then
+            \begin{align*}
+                \int f_ngd\mu &= \int_a^b \sin(2\pi nx)dx\\
+                &= \left[-\dfrac{1}{2\pi n}\cos(2\pi nx)\right]_a^b\\
+                &= \dfrac{1}{2\pi n}(\cos(2\pi nb) - \cos(2\pi na)).
+            \end{align*}
+
+            The absolute value of the last term is bounded by $1/(\pi n)$, hence $\int f_ngd\mu \to 0$ as $n\to\infty$,
+            and so $f_n\to 0$ weakly.
+        \end{solution}
+
+        \item $f_n(x) = n^{1/p}\chi (nx)$ in $L^p(\mathbb R)$. Then $f_n\to 0$ weakly if $p>1$,
+        but not when $p=1$. Here $\chi$ denotes the characteristic function of $[0,1]$.
+
+        \begin{solution}
+            Similarly we prove the statement when $1< p< \infty$ only using $\chi_{[a,b]}\in L^q$.
+            Then
+            \begin{align*}
+                \abs{\int f_n\chi_{[a,b]}dx} &= \abs{\int_a^b n^{1/p} \chi(nx)dx}\\
+                &= \int_{[a,b] \cap [0,1/n]} n^{1/p}dx\\
+                &\leq \int_0^{1/n} n^{1/p}dx\\
+                &= \dfrac1{n^{1-1/p}}.
+            \end{align*}
+            The last term converges to $0$ when $n\to\infty$, which proves our assertion.
+
+            When $p=1$, let's assume the contrary that there exists $f\in L^1$ so that
+            $\int f_ng \to \int fg$ for all $g\in L^\infty$. For any positive integer $N$,
+            we found that $\int f_n \chi_{[0,1/N]} \to 1$, hence $\int f\chi_{[0,1/N]} = 1$ for every $N$,
+            which cannot be true as we know that for any $f\in L^1$, we must have
+            $\lim_{N\to\infty}\int_0^{1/N} \abs{f}=0$.
+
+        \end{solution}
     \end{enumerate}
 \end{enumerate}
 
