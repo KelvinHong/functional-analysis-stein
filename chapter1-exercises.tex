@@ -554,6 +554,36 @@
             $\lim_{N\to\infty}\int_0^{1/N} \abs{f}=0$.
 
         \end{solution}
+
+        \item $f_n(x) = 1+\sin(2\pi nx)$ in $L^1([0,1])$. Then $f_n\to 1$ weakly
+        also in $L^1([0,1])$, $\norm{f_n}_{L^1} = 1$, but $\norm{f_n-1}_{L^1}$ does not
+        converge to zero.
+        Compare with Problem 6 part (d).
+
+        \begin{solution}
+            To prove the weak convergence, we show that $\sin(2\pi nx)\to 0$ weakly.
+            It suffices to show this for all characteristic function $g=\chi_{[a,b]}$ in $L^1([0,1])$
+            where $[a,b]\subset [0,1]$. We then have
+            \begin{align*}
+                \int_0^1 g \sin(2\pi nx)d\mu &= \int_a^b \sin(2\pi nx)dx\\
+                &= \dfrac{\cos(2\pi na) - \cos(2\pi nb)}{2\pi n}\\
+                \therefore \lim_{n\to\infty} \int_0^1 g \sin(2\pi nx)d\mu &= 0.
+            \end{align*}
+
+            Next we show that $\norm{f_n}_{L^1} = 1$ for all $n\geq 1$.
+            Since $f_n$ is itself non-negative, we have
+            \begin{align*}
+                \norm{f_n}_{L^1} &= \int_0^1 (1+\sin(2\pi nx))d\mu\\
+                &= \int_0^1 1d\mu + \int_0^1 \sin(2\pi nx)d\mu\\
+                &= 1 + 0 = 1.
+            \end{align*}
+            But clearly $\abs{f_n-1} = \abs{\sin(2\pi nx)} != \sin(2\pi nx)$, so we have
+            \begin{align*}
+                \int_0^1 \abs{\sin(2\pi nx)}dx&=\dfrac1{2\pi n}\int_0^{2\pi n} \abs{\sin x}dx\\
+                &=\dfrac1\pi \int_0^\pi \sin xdx\\
+                &=\dfrac2\pi \neq 0.
+            \end{align*}
+        \end{solution}
     \end{enumerate}
 \end{enumerate}
 
